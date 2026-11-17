@@ -10,5 +10,5 @@ Usarios:
 *Daniel
 *Isui
 *Adrian
-*Edwar
+*Edward
 
