@@ -20,6 +20,7 @@ Usuarios:
 *Adrian
 *Edward
 
+<<<<<<< HEAD
 69
 67
 911
@@ -36,3 +37,5 @@ Usuarios:Ricardo, Rubi, Daniel, Ishu, Adrian, Edward
 
 >>>>>>> b100eca7d0527a7041efa46d0e93d1aef17df88f
 
+=======
+>>>>>>> f49e7328a0e1bd6512db5c1a3b6362b3cf3801f0
