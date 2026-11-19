@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Crear Reporte</title>
+    </head>
+<body>
+    <h1>Crear Reporte</h1>
+    <form method="POST" action="{% url 'crear_reporte' %}">
+        {% csrf_token %}
+        <label for="titulo">Título:</label>
+        <input type="text" id="titulo" name="titulo" required><br><br>
+
+        <label for="contenido">Contenido:</label><br>
+        <textarea id="contenido" name="contenido" rows="10" cols="50" required></textarea><br><br>
+
+        <input type="submit" value="Crear Reporte">
+    </form>
+</body>
+</html>
