@@ -1,0 +1,35 @@
+{% extends 'base_registro.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-5">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <!-- Muestra "Registro de Alumno" o "Registro de Profesor" -->
+                <h3 class="text-center mb-4">{{ titulo }}</h3>
+                
+                <form method="POST">
+                    {% csrf_token %}
+                    
+                    <!-- Pinta los campos de Django -->
+                    {{ form.as_p }}
+
+                    <button type="submit" class="btn btn-primary w-100 mt-3">Registrarse</button>
+                </form>
+
+                <div class="text-center mt-3">
+                    <a href="{% url 'registro' %}" class="text-decoration-none">← Cambiar tipo de cuenta</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Pone la clase de Bootstrap a los cuadros de texto automáticamente -->
+<script>
+    let inputs = document.querySelectorAll('input');
+    for (let i = 0; i < inputs.length; i++) {
+        inputs[i].classList.add('form-control');
+    }
+</script>
+{% endblock %}
