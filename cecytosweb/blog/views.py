@@ -1,125 +1,28 @@
-from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Alumno, Docente, Administrador, Tutor, Reporte
+from django.shortcuts import render
 
+def index(request):
+    return render(request, 'blog/index.html')
 
-class AlumnoListView(ListView):
-    model = Alumno
-    template_name = 'alumnos/lista.html'
-    context_object_name = 'alumnos'
+def login_view(request):
+    return render(request, 'blog/login.html')
 
-class AlumnoCreateView(CreateView):
-    model = Alumno
-    fields = '__all__'
-    template_name = 'alumnos/formulario.html'
-    success_url = reverse_lazy('alumno_lista')
+def registro_view(request):
+    return render(request, 'blog/registro.html')
 
-class AlumnoUpdateView(UpdateView):
-    model = Alumno
-    fields = '__all__'
-    template_name = 'alumnos/formulario.html'
-    success_url = reverse_lazy('alumno_lista')
+def panel_alumno(request):
+    return render(request, 'blog/panel_alumno.html')
 
-class AlumnoDeleteView(DeleteView):
-    model = Alumno
-    template_name = 'alumnos/confirmar_eliminar.html'
-    success_url = reverse_lazy('alumno_lista')
+def justificar_faltas(request):
+    return render(request, 'blog/justificar_faltas.html')
 
+def horario(request):
+    return render(request, 'blog/horario.html')
 
+def panel_maestro(request):
+    return render(request, 'blog/panel_maestro.html')
 
-class DocenteListView(ListView):
-    model = Docente
-    template_name = 'docentes/lista.html'
-    context_object_name = 'docentes'
+def panel_tutor(request):
+    return render(request, 'blog/panel_tutor.html')
 
-class DocenteCreateView(CreateView):
-    model = Docente
-    fields = '__all__'
-    template_name = 'docentes/formulario.html'
-    success_url = reverse_lazy('docente_lista')
-
-class DocenteUpdateView(UpdateView):
-    model = Docente
-    fields = '__all__'
-    template_name = 'docentes/formulario.html'
-    success_url = reverse_lazy('docente_lista')
-
-class DocenteDeleteView(DeleteView):
-    model = Docente
-    template_name = 'docentes/confirmar_eliminar.html'
-    success_url = reverse_lazy('docente_lista')
-
-
-class AdministradorListView(ListView):
-    model = Administrador
-    template_name = 'administradores/lista.html'
-    context_object_name = 'administradores'
-
-class AdministradorCreateView(CreateView):
-    model = Administrador
-    fields = '__all__'
-    template_name = 'administradores/formulario.html'
-    success_url = reverse_lazy('administrador_lista')
-
-class AdministradorUpdateView(UpdateView):
-    model = Administrador
-    fields = '__all__'
-    template_name = 'administradores/formulario.html'
-    success_url = reverse_lazy('administrador_lista')
-
-class AdministradorDeleteView(DeleteView):
-    model = Administrador
-    template_name = 'administradores/confirmar_eliminar.html'
-    success_url = reverse_lazy('administrador_lista')
-
-
-
-class TutorListView(ListView):
-    model = Tutor
-    template_name = 'tutores/lista.html'
-    context_object_name = 'tutores'
-
-class TutorCreateView(CreateView):
-    model = Tutor
-    fields = '__all__'
-    template_name = 'tutores/formulario.html'
-    success_url = reverse_lazy('tutor_lista')
-
-class TutorUpdateView(UpdateView):
-    model = Tutor
-    fields = '__all__'
-    template_name = 'tutores/formulario.html'
-    success_url = reverse_lazy('tutor_lista')
-
-class TutorDeleteView(DeleteView):
-    model = Tutor
-    template_name = 'tutores/confirmar_eliminar.html'
-    success_url = reverse_lazy('tutor_lista')
-
-
-class ReporteListView(ListView):
-    model = Reporte
-    template_name = 'reportes/lista.html'
-    context_object_name = 'reportes'
-
-class ReporteDetailView(DetailView):
-    model = Reporte
-    template_name = 'reportes/detalle.html'
-    context_object_name = 'reporte'
-
-class ReporteCreateView(CreateView):
-    model = Reporte
-    fields = '__all__'
-    template_name = 'reportes/formulario.html'
-    success_url = reverse_lazy('reporte_lista')
-
-class ReporteUpdateView(UpdateView):
-    model = Reporte
-    fields = '__all__'
-    template_name = 'reportes/formulario.html'
-    success_url = reverse_lazy('reporte_lista')
-
-class ReporteDeleteView(DeleteView):
-    model = Reporte
-    template_name = 'reportes/confirmar_eliminar.html'
-    success_url = reverse_lazy('reporte_lista')
+def panel_admin(request):
+    return render(request, 'blog/panel_admin.html')
