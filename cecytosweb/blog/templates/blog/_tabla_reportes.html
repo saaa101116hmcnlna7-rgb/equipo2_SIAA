@@ -1,0 +1,21 @@
+<div class="table-responsive">
+    <table class="table table-hover align-middle mb-0">
+        <thead>
+            <tr><th>#</th><th>Fecha</th><th>Título</th><th>Alumno</th><th>Docente</th><th></th></tr>
+        </thead>
+        <tbody>
+            {% for r in reportes %}
+                <tr>
+                    <td>{{ r.num_reporte }}</td>
+                    <td>{{ r.fecha_reporte|date:"d/m/Y" }}</td>
+                    <td>{{ r.titulo_reporte }}</td>
+                    <td>{{ r.alumno_reporte }}</td>
+                    <td>{{ r.docente_reporte|default:"Sin asignar" }}</td>
+                    <td><a href="{% url 'reporte_detalle' r.pk %}" class="btn btn-outline-primary btn-sm">Ver</a></td>
+                </tr>
+            {% empty %}
+                <tr><td colspan="6" class="text-center text-muted">No hay reportes.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

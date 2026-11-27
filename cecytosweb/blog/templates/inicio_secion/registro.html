@@ -1,35 +1,24 @@
-{% extends 'base_registro.html' %}
+{% extends 'inicio_secion/base_registro.html' %}
 
 {% block content %}
 <div class="row justify-content-center">
-    <div class="col-md-5">
-        <div class="card shadow-sm">
-            <div class="card-body">
-                <!-- Muestra "Registro de Alumno" o "Registro de Profesor" -->
-                <h3 class="text-center mb-4">{{ titulo }}</h3>
-                
-                <form method="POST">
-                    {% csrf_token %}
-                    
-                    <!-- Pinta los campos de Django -->
-                    {{ form.as_p }}
-
-                    <button type="submit" class="btn btn-primary w-100 mt-3">Registrarse</button>
-                </form>
-
-                <div class="text-center mt-3">
-                    <a href="{% url 'registro' %}" class="text-decoration-none">← Cambiar tipo de cuenta</a>
-                </div>
+    <div class="col-lg-8">
+        <div class="card card-crema shadow p-4">
+            <h3 class="text-center fw-bold mb-4">{% block titulo %}Registro{% endblock %}</h3>
+            {% block aviso %}{% endblock %}
+            <form method="post">
+                {% csrf_token %}
+                <h5 class="fw-bold">Datos de acceso</h5>
+                {% include 'blog/_campos.html' with form=usuario_form %}
+                <hr>
+                <h5 class="fw-bold">Datos personales</h5>
+                {% include 'blog/_campos.html' with form=perfil_form columna='col-md-6' %}
+                <button type="submit" class="btn btn-cecytos w-100 mt-4">Registrarse</button>
+            </form>
+            <div class="text-center mt-3">
+                <a href="{% url 'registro' %}">← Cambiar tipo de cuenta</a>
             </div>
         </div>
     </div>
 </div>
-
-<!-- Pone la clase de Bootstrap a los cuadros de texto automáticamente -->
-<script>
-    let inputs = document.querySelectorAll('input');
-    for (let i = 0; i < inputs.length; i++) {
-        inputs[i].classList.add('form-control');
-    }
-</script>
 {% endblock %}

@@ -1,0 +1,8 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<div class="alert alert-warning text-center">
+    <h4>No tienes permiso para ver esta página.</h4>
+    <a href="{% url 'panel' %}" class="btn btn-cecytos">Ir a mi panel</a>
+</div>
+{% endblock %}

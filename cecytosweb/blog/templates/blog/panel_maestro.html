@@ -1,0 +1,14 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Panel del docente{% endblock %}
+
+{% block content %}
+<div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-4">
+    <h2 class="fw-bold mb-0">{{ docente.nombre_docente }}</h2>
+    <a href="{% url 'crear_reporte' %}" class="btn btn-cecytos"><i class="bi bi-plus-circle me-1"></i>Nuevo reporte</a>
+</div>
+<div class="card shadow">
+    <div class="card-header fw-bold">Reportes que he creado</div>
+    <div class="card-body">{% include 'blog/_tabla_reportes.html' %}</div>
+</div>
+{% endblock %}

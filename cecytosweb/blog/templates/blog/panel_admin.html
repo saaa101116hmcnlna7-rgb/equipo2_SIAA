@@ -1,0 +1,62 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Panel administrativo{% endblock %}
+
+{% block content %}
+<div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-4">
+    <h2 class="fw-bold mb-0">Panel administrativo</h2>
+    {% if user.is_staff %}
+        <a href="{% url 'admin:index' %}" class="btn btn-cecytos"><i class="bi bi-gear me-1"></i>Administrar datos</a>
+    {% endif %}
+</div>
+
+<div class="row g-3 mb-4 text-center">
+    <div class="col-md-4"><div class="card card-crema p-3"><div class="fs-2 fw-bold">{{ total_alumnos }}</div>Alumnos</div></div>
+    <div class="col-md-4"><div class="card card-crema p-3"><div class="fs-2 fw-bold">{{ total_docentes }}</div>Docentes</div></div>
+    <div class="col-md-4"><div class="card card-crema p-3"><div class="fs-2 fw-bold">{{ total_reportes }}</div>Reportes</div></div>
+</div>
+
+<div class="card shadow mb-4">
+    <div class="card-header fw-bold">Docentes por aprobar</div>
+    <ul class="list-group list-group-flush">
+        {% for d in docentes_pendientes %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <span>{{ d.nombre_docente }} ({{ d.correo_docente }})</span>
+                <form method="post" action="{% url 'aprobar_docente' d.pk %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-success btn-sm">Aprobar</button>
+                </form>
+            </li>
+        {% empty %}
+            <li class="list-group-item text-muted">No hay cuentas pendientes.</li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="card shadow mb-4">
+    <div class="card-header fw-bold">Justificantes pendientes</div>
+    <ul class="list-group list-group-flush">
+        {% for j in justificantes %}
+            <li class="list-group-item d-flex flex-wrap justify-content-between align-items-center gap-2">
+                <div>
+                    <strong>{{ j.alumno }}</strong> - falta del {{ j.fecha_falta|date:"d/m/Y" }}<br>
+                    {{ j.motivo }}
+                    {% if j.comprobante %}<br><a href="{% url 'comprobante' j.pk %}">Descargar comprobante</a>{% endif %}
+                </div>
+                <form method="post" action="{% url 'revisar_justificante' j.pk %}">
+                    {% csrf_token %}
+                    <button type="submit" name="decision" value="aprobado" class="btn btn-success btn-sm">Aprobar</button>
+                    <button type="submit" name="decision" value="rechazado" class="btn btn-danger btn-sm">Rechazar</button>
+                </form>
+            </li>
+        {% empty %}
+            <li class="list-group-item text-muted">No hay justificantes pendientes.</li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="card shadow">
+    <div class="card-header fw-bold">Últimos 20 reportes</div>
+    <div class="card-body">{% include 'blog/_tabla_reportes.html' %}</div>
+</div>
+{% endblock %}

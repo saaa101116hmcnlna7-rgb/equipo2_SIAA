@@ -1,0 +1,26 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Panel del alumno{% endblock %}
+
+{% block content %}
+<div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-4">
+    <div>
+        <h2 class="fw-bold mb-0">{{ alumno.nombre_alumno }}</h2>
+        <small class="text-info">No. de control: {{ alumno.num_control_alumno }} | Grado: {{ alumno.grado_alumno }} | Grupo: {{ alumno.grupo_alumno }}</small>
+    </div>
+    <div>
+        <a href="{% url 'justificar_faltas' %}" class="btn btn-cecytos"><i class="bi bi-file-earmark-plus me-1"></i>Justificar falta</a>
+        <a href="{% url 'horario' %}" class="btn btn-outline-light rounded-pill"><i class="bi bi-calendar3 me-1"></i>Horario</a>
+    </div>
+</div>
+
+<div class="card shadow mb-4">
+    <div class="card-header fw-bold">Mis reportes</div>
+    <div class="card-body">{% include 'blog/_tabla_reportes.html' %}</div>
+</div>
+
+<div class="card shadow">
+    <div class="card-header fw-bold">Mis justificantes</div>
+    <div class="card-body">{% include 'blog/_tabla_justificantes.html' %}</div>
+</div>
+{% endblock %}

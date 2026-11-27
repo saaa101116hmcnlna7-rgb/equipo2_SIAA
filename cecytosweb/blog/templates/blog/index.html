@@ -1,0 +1,38 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<div class="text-center py-4">
+    <h1 class="display-5 fw-bold">Sistema de reportes de alumnos</h1>
+    <p class="lead">Consulta reportes, justifica faltas y da seguimiento en un solo lugar.</p>
+    {% if user.is_authenticated %}
+        <a href="{% url 'panel' %}" class="btn btn-cecytos">Ir a mi panel</a>
+    {% else %}
+        <a href="{% url 'login' %}" class="btn btn-cecytos me-2">Iniciar sesión</a>
+        <a href="{% url 'registro' %}" class="btn btn-outline-light rounded-pill px-4">Registrarme</a>
+    {% endif %}
+</div>
+
+<div class="row g-4 mt-3">
+    <div class="col-md-4">
+        <div class="card card-crema h-100 p-4 text-center">
+            <i class="bi bi-mortarboard fs-1"></i>
+            <h4 class="fw-bold">Alumnos</h4>
+            <p class="mb-0">Revisan sus reportes, su horario y envían justificantes.</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card card-crema h-100 p-4 text-center">
+            <i class="bi bi-person-workspace fs-1"></i>
+            <h4 class="fw-bold">Docentes</h4>
+            <p class="mb-0">Crean y consultan reportes.</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card card-crema h-100 p-4 text-center">
+            <i class="bi bi-people fs-1"></i>
+            <h4 class="fw-bold">Tutores</h4>
+            <p class="mb-0">Dan seguimiento a los alumnos que tienen asignados.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
