@@ -26,3 +26,5 @@ def panel_tutor(request):
 
 def panel_admin(request):
     return render(request, 'blog/panel_admin.html')
+def bienvenida(request):
+    return render(request, 'blog/bienvenida.html')
