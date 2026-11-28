@@ -7,7 +7,6 @@ from .models import Alumno, Docente, Justificante, Reporte, Tutor
 
 
 class BootstrapMixin:
-    """Agrega las clases de Bootstrap a todos los campos del formulario."""
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for campo in self.fields.values():
@@ -90,7 +89,7 @@ class TutorForm(BootstrapMixin, forms.ModelForm):
 
 
 class ReporteForm(BootstrapMixin, forms.ModelForm):
-    # El docente no se elige: se toma de la sesión iniciada.
+    
     class Meta:
         model = Reporte
         fields = [

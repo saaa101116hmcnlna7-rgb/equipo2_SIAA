@@ -5,7 +5,6 @@ from django.core.exceptions import PermissionDenied
 
 
 def rol_de(user):
-    """Devuelve 'admin', 'docente', 'tutor', 'alumno' o None."""
     if not user.is_authenticated:
         return None
     if user.is_staff or hasattr(user, 'administrador'):
@@ -17,7 +16,7 @@ def rol_de(user):
 
 
 def requiere_rol(rol):
-    """Permite entrar a la vista solo a usuarios con sesión y con ese rol."""
+    
     def decorador(vista):
         @wraps(vista)
         @login_required
